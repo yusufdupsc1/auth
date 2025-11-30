@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="backdrop">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <main class="auth-shell">
+    <section class="card card-info">
+      <div class="badge">Trusted access</div>
+      <h1>Sign in to unlock your workspace</h1>
+      <p class="lede">Keep your projects safe with passwordless links and strong verification.</p>
+      <ul class="perks">
+        <li>Single sign-on ready</li>
+        <li>Granular device trust</li>
+        <li>Human-friendly security</li>
+      </ul>
+      <div class="avatars">
+        <span class="avatar">MJ</span>
+        <span class="avatar">AL</span>
+        <span class="avatar">BR</span>
+        <span class="avatar">MS</span>
+      </div>
+      <p class="footnote">Teams ship faster when sign-in feels effortless.</p>
+    </section>
+
+    <section class="card card-form">
+      <header class="card-header">
+        <div>
+          <p class="eyebrow">Welcome back</p>
+          <h2>Sign in</h2>
+          <p class="muted">Use your email and a secure password to continue.</p>
+        </div>
+        <a class="help-link" href="#">Need help?</a>
+      </header>
+
+      <form id="signin-form" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <p class="hint" data-hint="email">Use a work email for the smoothest access.</p>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required>
+            <button type="button" class="ghost-btn" id="toggle-password">Show</button>
+          </div>
+          <p class="hint" data-hint="password">At least 8 characters with a mix of letters and numbers.</p>
+        </div>
+
+        <div class="actions">
+          <label class="checkbox">
+            <input type="checkbox" id="remember" name="remember" checked>
+            <span>Remember me on this device</span>
+          </label>
+          <a href="#" class="small-link">Forgot password?</a>
+        </div>
+
+        <button class="cta" type="submit">Continue</button>
+
+        <div class="divider">
+          <span>or continue with</span>
+        </div>
+
+        <div class="socials">
+          <button type="button" class="social-btn">
+            <span class="icon">G</span>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <span class="icon">GH</span>
+            GitHub
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
