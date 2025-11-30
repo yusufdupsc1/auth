@@ -10,6 +10,9 @@
   --border: rgba(255, 255, 255, 0.08);
   --shadow: 0 20px 80px rgba(6, 12, 28, 0.6);
   --radius: 18px;
+  --ring: 0 0 0 2px rgba(83, 183, 255, 0.28);
+  --glow: 0 24px 80px rgba(83, 183, 255, 0.16);
+  --transition: 200ms ease;
   --font: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -28,6 +31,12 @@ body {
   display: grid;
   place-items: center;
   padding: 32px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: rgba(124, 242, 200, 0.25);
+  color: var(--text);
 }
 
 .backdrop {
@@ -74,6 +83,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
+  align-items: stretch;
 }
 
 .card {
@@ -82,11 +92,26 @@ body {
   border-radius: var(--radius);
   padding: 32px;
   box-shadow: var(--shadow);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .card-info {
   position: relative;
   overflow: hidden;
+}
+
+.card-info::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(83, 183, 255, 0.08), transparent 45%);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(83, 183, 255, 0.2);
+  box-shadow: var(--glow);
 }
 
 .badge {
@@ -198,7 +223,7 @@ h2 {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color var(--transition), transform var(--transition);
 }
 
 .help-link:hover,
@@ -231,7 +256,7 @@ form {
   padding: 14px 12px;
   border-radius: 12px;
   font-size: 15px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
 .field input:focus {
@@ -239,6 +264,10 @@ form {
   border-color: rgba(83, 183, 255, 0.5);
   box-shadow: 0 12px 35px rgba(83, 183, 255, 0.1);
   transform: translateY(-1px);
+}
+
+.field input:focus-visible {
+  box-shadow: var(--ring);
 }
 
 .password-wrap {
@@ -256,12 +285,18 @@ form {
   padding: 10px 12px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .ghost-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(83, 183, 255, 0.5);
+}
+
+.ghost-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  transform: translateY(-1px);
 }
 
 .hint {
@@ -303,7 +338,7 @@ form {
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 20px 55px rgba(83, 183, 255, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
 }
 
 .cta:hover {
@@ -313,6 +348,11 @@ form {
 
 .cta:active {
   transform: translateY(0);
+}
+
+.cta:focus-visible {
+  outline: none;
+  box-shadow: var(--ring), 0 24px 70px rgba(83, 183, 255, 0.45);
 }
 
 .divider {
@@ -348,13 +388,20 @@ form {
   gap: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .social-btn:hover {
   border-color: rgba(83, 183, 255, 0.5);
   transform: translateY(-1px);
   box-shadow: 0 14px 36px rgba(83, 183, 255, 0.12);
+}
+
+.social-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  transform: translateY(-1px);
+  background: rgba(83, 183, 255, 0.08);
 }
 
 .icon {
@@ -380,6 +427,20 @@ form {
 
 .field.invalid .hint {
   color: var(--danger);
+}
+
+.card,
+.cta,
+.social-btn,
+.ghost-btn {
+  will-change: transform, box-shadow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 720px) {
