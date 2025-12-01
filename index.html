@@ -17,10 +17,10 @@
   </div>
 
   <main class="auth-shell">
-    <section style="display: none;" class="card card-info">
+    <section style="display: none;" class="card card-info" id="card-info">
       <div class="badge">Trusted access</div>
-      <h1>Sign in to unlock your workspace</h1>
-      <p class="lede">Keep your projects safe with passwordless links and strong verification.</p>
+      <h1>Welcome to your workspace!</h1>
+      <p class="lede">You are now logged in. Enjoy your secure workspace.</p>
       <ul class="perks">
         <li>Single sign-on ready</li>
         <li>Granular device trust</li>
@@ -33,9 +33,10 @@
         <span class="avatar">MS</span>
       </div>
       <p class="footnote">Teams ship faster when sign-in feels effortless.</p>
+      <button class="cta logout-btn" id="logout-btn">Logout</button>
     </section>
 
-    <section class="card card-form">
+    <section class="card card-form" id="card-form">
       <header class="card-header">
         <div>
           <p class="eyebrow">Welcome back</p>
@@ -47,9 +48,9 @@
 
       <form id="signin-form" novalidate>
         <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-          <p class="hint" data-hint="email">Use a work email for the smoothest access.</p>
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" required>
+          <p class="hint" data-hint="username">Enter your username to continue.</p>
         </div>
 
         <div class="field">

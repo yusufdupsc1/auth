@@ -187,6 +187,16 @@ h1 {
   margin: 0;
 }
 
+.logout-btn {
+  margin-top: 24px;
+  background: linear-gradient(120deg, #ff6d8c, #ff9f7a);
+  width: 100%;
+}
+
+.logout-btn:hover {
+  box-shadow: 0 24px 70px rgba(255, 109, 140, 0.35);
+}
+
 .card-form {
   backdrop-filter: blur(4px);
 }
